@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #ifndef __cplusplus
 typedef unsigned char bool;
 #endif
@@ -156,7 +157,16 @@ int main(int argc, char ** argv) {
   uint8_t* C;
   uint8_t* D;
   uint8_t* tmp;
+  uint64_t mul31;
+  uint64_t mul34;
+  uint64_t mul37;
+  uint64_t mul40;
+  uint64_t mul43;
   int32_t call47;
+  uint64_t mul49;
+  uint64_t mul52;
+  uint64_t mul55;
+  uint64_t mul58;
   int32_t call66;
 
   dump_code = atoi(argv[1]);
@@ -171,12 +181,17 @@ int main(int argc, char ** argv) {
   tmp = malloc(call2 * call4 * 8);
   _ZL10init_arrayiiiiPdS_S_S_S_(call2, call4, call7, call10, ((double*)A), ((double*)B), ((double*)C), ((double*)D), ((double*)tmp));
 ;
-#pragma acc data pcopyin(A[0:call2 * call7 * 8], B[0:call7 * call4 * 8], C[0:call10 * call4 * 8], tmp[0:call2 * call4 * 8], D[0:call2 * call10 * 8]) copyout(D[0:call2 * call10 * 8])
-{
+  mul31 = call2 * call7 * 8;
+  mul34 = call7 * call4 * 8;
+  mul37 = call10 * call4 * 8;
+  mul40 = call2 * call10 * 8;
+  mul43 = call2 * call4 * 8;
+  mul49 = call7 * call4 * 8;
+  mul52 = call10 * call4 * 8;
+  mul55 = call2 * call10 * 8;
+  mul58 = call2 * call4 * 8;
   _ZL6kerneliiiiddPdS_S_S_S_(call2, call4, call7, call10, 32412, 2123, ((double*)tmp), ((double*)A), ((double*)B), ((double*)C), ((double*)D));
 ;
-
-}
   if (dump_code == 1) {
 _ZL11print_arrayiiPd(call2, call7, ((double*)D));
   }
@@ -197,28 +212,28 @@ void _ZL10init_arrayiiiiPdS_S_S_S_(uint32_t ni, uint32_t nj, uint32_t nk, uint32
 for(int64_t i = 0; i < ni;   i = i + 1){
 
 for(int64_t j = 0; j < nk;   j = j + 1){
-  A[(i * ni + j)] = (double)(i) * (double)(j) / (double)(ni);
+  A[(i * ni + j)] = (((double)(i) * (double)(j)) / (double)(ni));
 }
 }
 
 for(int64_t i = 0; i < nk;   i = i + 1){
 
 for(int64_t j = 0; j < nj;   j = j + 1){
-  B[(i * nk + j)] = (double)(i) * (double)((j + 1)) / (double)(nj);
+  B[(i * nk + j)] = (((double)(i) * (double)((j + 1))) / (double)(nj));
 }
 }
 
 for(int64_t i = 0; i < nl;   i = i + 1){
 
 for(int64_t j = 0; j < nj;   j = j + 1){
-  C[(i * nl + j)] = (double)(i) * (double)((j + 3)) / (double)(nl);
+  C[(i * nl + j)] = (((double)(i) * (double)((j + 3))) / (double)(nl));
 }
 }
 
 for(int64_t i = 0; i < ni;   i = i + 1){
 
 for(int64_t j = 0; j < nl;   j = j + 1){
-  D[(i * ni + j)] = (double)(i) * (double)((j + 2)) / (double)(nk);
+  D[(i * ni + j)] = (((double)(i) * (double)((j + 2))) / (double)(nk));
 }
 }
 
@@ -274,12 +289,10 @@ void _ZL6kerneliiiiddPdS_S_S_S_(uint32_t ni, uint32_t nj, uint32_t nk, uint32_t 
   memcpy(((uint8_t*)(&agg_2e_tmp7)), ((uint8_t*)(&block)), 12);
   memcpy(((uint8_t*)(&agg_2e_tmp_2e_coerce)), ((uint8_t*)(&agg_2e_tmp)), 12);
   memcpy(((uint8_t*)(&agg_2e_tmp7_2e_coerce)), ((uint8_t*)(&agg_2e_tmp7)), 12);
-#pragma acc loop worker collapse(2)
-
+#pragma omp parallel for collapse(2)
 for(int32_t i = 0; i < call;   i = i + 1){
 
 for(int32_t j = 0; j < call5;   j = j + 1){
-#pragma acc parallel loop gang collapse(2)
 
 for(int32_t k = 0; k < 8;   k = k + 1){
 
@@ -298,12 +311,10 @@ _Z14kernel_A_mul_BiiiiddPdS_S_S_S__OC_1(ni, nj, nk, nl, alpha, beta, tmp, A, B, 
   memcpy(((uint8_t*)(&agg_2e_tmp21)), ((uint8_t*)(&block)), 12);
   memcpy(((uint8_t*)(&agg_2e_tmp20_2e_coerce)), ((uint8_t*)(&agg_2e_tmp20)), 12);
   memcpy(((uint8_t*)(&agg_2e_tmp21_2e_coerce)), ((uint8_t*)(&agg_2e_tmp21)), 12);
-#pragma acc loop worker collapse(2)
-
+#pragma omp parallel for collapse(2)
 for(int32_t i = 0; i < call13;   i = i + 1){
 
 for(int32_t j = 0; j < call18;   j = j + 1){
-#pragma acc parallel loop gang collapse(2)
 
 for(int32_t k = 0; k < 8;   k = k + 1){
 
@@ -326,13 +337,13 @@ void _ZL11print_arrayiiPd(uint32_t ni, uint32_t nl, double* D) {
 for(int64_t i = 0; i < ni;   i = i + 1){
 
 for(int64_t j = 0; j < nl;   j = j + 1){
-  uint32_t call = fprintf(stderr, _OC_str, D[(i * ni + j)]);
+  uint32_t call = fprintf(stderr, (_OC_str), D[(i * ni + j)]);
   if ((int)(i * ni + j) % (int)20 == 0) {
-  fprintf(stderr, _OC_str_OC_1);
+  fprintf(stderr, (_OC_str_OC_1));
   }
 }
 }
-  fprintf(stderr, _OC_str_OC_1);
+  fprintf(stderr, (_OC_str_OC_1));
 }
 
 
@@ -349,7 +360,7 @@ void _Z14kernel_A_mul_BiiiiddPdS_S_S_S__OC_1(uint32_t ni, uint32_t nj, uint32_t 
   dot = 0;
 
 for(int64_t k = 0; k < nk;   k = k + 1){
-  dot = (dot + alpha * A[(i * nk + k)] * B[(k * nj + j)]);
+  dot = (dot + ((alpha * A[(i * nk + k)]) * B[(k * nj + j)]));
 }
   tmp[(i * nj + j)] = dot;
   }
@@ -368,10 +379,10 @@ void _Z23kernel_D_plus_tmp_mul_CiiiiddPdS_S_S_S__OC_2(uint32_t ni, uint32_t nj, 
   l = blockDim_2e_y * blockIdx_2e_y + threadIdx_2e_y;
   if (i < ni) {
   if (l < nl) {
-  dot = D[(i * nj + l)] * beta;
+  dot = (D[(i * nj + l)] * beta);
 
 for(int64_t j = 0; j < nj;   j = j + 1){
-  dot = (dot + tmp[(i * nj + j)] * C[(j * nl + l)]);
+  dot = (dot + (tmp[(i * nj + j)] * C[(j * nl + l)]));
 }
   D[(i * nl + l)] = dot;
   }

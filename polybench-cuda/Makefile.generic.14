@@ -1,9 +1,9 @@
 RUN_TIMEOUT?=7200 # 2 hours.
-CUDAFE=/u/ah7226/CudaFE/
+CUDAFE=/scratch/ah7226/CudaFE
 LLVM18=/u/NAS_SCRATCH/yc0769/xstack/xstack-installs/polygeist-llvm-install
 POLYGEIST=/u/NAS_SCRATCH/yc0769/xstack/xstack-installs/polygeist-install
 NOELLE=/u/NAS_SCRATCH/yc0769/xstack/xstack-installs/noelle-susan/install
-SPLENDID_CPU=/u/NAS_SCRATCH/yc0769/xstack/llvm-install-release/bin/splendid
+SPLENDID_CPU=/scratch/ah7226/install-14-cudafe/bin/splendid
 SPLENDID_GPU=/u/NAS_SCRATCH/yc0769/xstack/llvm-install-debug/bin/splendid
 SPLENDID_ACC=/u/NAS_SCRATCH/yc0769/xstack/llvm-install-openacc/bin/splendid
 #ADDITIONAL_PASSES+=-O1
@@ -67,12 +67,14 @@ manual.gcc.cpu.exe: ${BMARK}_cpu_noelle_manual.c
 %.ll: ${BMARK}.cu
 	clang -Xclang -disable-O0-optnone -S -emit-llvm -g $<
 
-${BMARK}_linked.bc: ${BMARK}-cuda-nvptx64-nvidia-cuda-sm_20.ll ${BMARK}.ll
-	llvm-link-cudafe ${BMARK}-cuda-nvptx64-nvidia-cuda-sm_20.ll ${BMARK}.ll -o ${BMARK}_linked.bc
+${BMARK}_linked.bc: ${BMARK}-cuda-nvptx64-nvidia-cuda-sm_35.ll ${BMARK}.ll
+	llvm-link-cudafe ${BMARK}-cuda-nvptx64-nvidia-cuda-sm_35.ll ${BMARK}.ll -o ${BMARK}_linked.bc
 
 ${BMARK}_cpu.bc: ${BMARK}_linked.bc
 	#opt -load ${CUDAFE}/build/MergeKernel/libLLVMCudaFE.so -merge-kernel ${BMARK}_linked.bc -o ${BMARK}_cpu.bc 2> debug_cudafe
-	opt -load ${CUDAFE}/build/MergeKernel/libLLVMCudaFE.so -merge-kernel -mem2reg -indvars -dce ${ADDITIONAL_PASSES} ${BMARK}_linked.bc -o ${BMARK}_cpu.bc 2> debug_cudafe
+	#opt -load ${CUDAFE}/build/MergeKernel/libLLVMCudaFE.so -merge-kernel -mem2reg -indvars -dce ${ADDITIONAL_PASSES} ${BMARK}_linked.bc -o ${BMARK}_cpu.bc 2> debug_cudafe
+	# New pass manager:
+	opt -enable-new-pm=0 -load /scratch/ah7226/CudaFE/build/MergeKernel/libLLVMCudaFE.so -merge-kernel -mem2reg -indvars -dce ${ADDITIONAL_PASSES} ${BMARK}_linked.bc -o ${BMARK}_cpu.bc 2> debug_cudafe
 
 ${BMARK}_openacc.c: ${BMARK}_cpu.bc
 	$(SPLENDID_ACC) $< 2> debug

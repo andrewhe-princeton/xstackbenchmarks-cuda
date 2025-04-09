@@ -1,0 +1,141 @@
+mergeKernel: found originalAlloc   %A = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost = load double*, double** %A, align 8
+mergeKernel: found originalAlloc user  %111 = load double*, double** %A, align 8, !dbg !1977
+mergeKernel: found originalAlloc user  %46 = load double*, double** %A, align 8, !dbg !1900
+mergeKernel: found originalAlloc user  %29 = load double*, double** %A, align 8, !dbg !1854
+mergeKernel: found originalAlloc user  store double* %12, double** %A, align 8, !dbg !1811
+mergeKernel: found originalAlloc store:  store double* %12, double** %A, align 8, !dbg !1811
+mergeKernel: found originalAlloc cast:  %12 = bitcast i8* %call13 to double*, !dbg !1817
+mergeKernel: found originalAlloc ci:  %call13 = call noalias i8* @malloc(i64 noundef %mul12) #14, !dbg !1816
+mergeKernel: found originalAlloc   %B = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost1 = load double*, double** %B, align 8
+mergeKernel: found originalAlloc user  %113 = load double*, double** %B, align 8, !dbg !1982
+mergeKernel: found originalAlloc user  %52 = load double*, double** %B, align 8, !dbg !1910
+mergeKernel: found originalAlloc user  %30 = load double*, double** %B, align 8, !dbg !1857
+mergeKernel: found originalAlloc user  store double* %15, double** %B, align 8, !dbg !1821
+mergeKernel: found originalAlloc store:  store double* %15, double** %B, align 8, !dbg !1821
+mergeKernel: found originalAlloc cast:  %15 = bitcast i8* %call16 to double*, !dbg !1827
+mergeKernel: found originalAlloc ci:  %call16 = call noalias i8* @malloc(i64 noundef %mul15) #14, !dbg !1826
+mergeKernel: found originalAlloc   %C = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost2 = load double*, double** %C, align 8
+mergeKernel: found originalAlloc user  %115 = load double*, double** %C, align 8, !dbg !1986
+mergeKernel: found originalAlloc user  %58 = load double*, double** %C, align 8, !dbg !1919
+mergeKernel: found originalAlloc user  %31 = load double*, double** %C, align 8, !dbg !1860
+mergeKernel: found originalAlloc user  store double* %18, double** %C, align 8, !dbg !1831
+mergeKernel: found originalAlloc store:  store double* %18, double** %C, align 8, !dbg !1831
+mergeKernel: found originalAlloc cast:  %18 = bitcast i8* %call19 to double*, !dbg !1837
+mergeKernel: found originalAlloc ci:  %call19 = call noalias i8* @malloc(i64 noundef %mul18) #14, !dbg !1836
+mergeKernel: found originalAlloc   %D = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost3 = load double*, double** %D, align 8
+mergeKernel: found originalAlloc user  %117 = load double*, double** %D, align 8, !dbg !1990
+mergeKernel: found originalAlloc user  %108 = load double*, double** %D, align 8, !dbg !1980
+mergeKernel: found originalAlloc user  %85 = load double*, double** %D, align 8, !dbg !1953
+mergeKernel: found originalAlloc user  %64 = load double*, double** %D, align 8, !dbg !1928
+mergeKernel: found originalAlloc user  %32 = load double*, double** %D, align 8, !dbg !1863
+mergeKernel: found originalAlloc user  store double* %21, double** %D, align 8, !dbg !1841
+mergeKernel: found originalAlloc store:  store double* %21, double** %D, align 8, !dbg !1841
+mergeKernel: found originalAlloc cast:  %21 = bitcast i8* %call22 to double*, !dbg !1847
+mergeKernel: found originalAlloc ci:  %call22 = call noalias i8* @malloc(i64 noundef %mul21) #14, !dbg !1846
+mergeKernel: found originalAlloc   %tmp = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost4 = load double*, double** %tmp, align 8
+mergeKernel: found originalAlloc user  %109 = load double*, double** %tmp, align 8, !dbg !1984
+mergeKernel: found originalAlloc user  %70 = load double*, double** %tmp, align 8, !dbg !1937
+mergeKernel: found originalAlloc user  %33 = load double*, double** %tmp, align 8, !dbg !1866
+mergeKernel: found originalAlloc user  store double* %24, double** %tmp, align 8, !dbg !1851
+mergeKernel: found originalAlloc store:  store double* %24, double** %tmp, align 8, !dbg !1851
+mergeKernel: found originalAlloc cast:  %24 = bitcast i8* %call25 to double*, !dbg !1857
+mergeKernel: found originalAlloc ci:  %call25 = call noalias i8* @malloc(i64 noundef %mul24) #14, !dbg !1856
+mergeKernel: found originalAlloc   %D = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost5 = load double*, double** %D, align 8
+mergeKernel: found originalAlloc user  %ldHost3 = load double*, double** %D, align 8
+mergeKernel: found originalAlloc user  %117 = load double*, double** %D, align 8, !dbg !1994
+mergeKernel: found originalAlloc user  %108 = load double*, double** %D, align 8, !dbg !1984
+mergeKernel: found originalAlloc user  %85 = load double*, double** %D, align 8, !dbg !1957
+mergeKernel: found originalAlloc user  %64 = load double*, double** %D, align 8, !dbg !1932
+mergeKernel: found originalAlloc user  %32 = load double*, double** %D, align 8, !dbg !1867
+mergeKernel: found originalAlloc user  store double* %21, double** %D, align 8, !dbg !1841
+mergeKernel: found originalAlloc store:  store double* %21, double** %D, align 8, !dbg !1841
+mergeKernel: found originalAlloc cast:  %21 = bitcast i8* %call22 to double*, !dbg !1849
+mergeKernel: found originalAlloc ci:  %call22 = call noalias i8* @malloc(i64 noundef %mul21) #14, !dbg !1847, !tulip.target.mapdata.to !1848
+CudaFE: found cudaConfigureCall
+mergeKernel: kernelBB: 
+kcall.configok:                                   ; preds = %entry
+  %21 = load i32, i32* %ni.addr, align 4, !dbg !1826
+  %22 = load i32, i32* %nj.addr, align 4, !dbg !1827
+  %23 = load i32, i32* %nk.addr, align 4, !dbg !1828
+  %24 = load i32, i32* %nl.addr, align 4, !dbg !1829
+  %25 = load double, double* %alpha.addr, align 8, !dbg !1830
+  %26 = load double, double* %beta.addr, align 8, !dbg !1831
+  %27 = load double*, double** %tmp.addr, align 8, !dbg !1832
+  %28 = load double*, double** %A.addr, align 8, !dbg !1833
+  %29 = load double*, double** %B.addr, align 8, !dbg !1834
+  %30 = load double*, double** %C.addr, align 8, !dbg !1835
+  %31 = load double*, double** %D.addr, align 8, !dbg !1836
+  call void @_Z29__device_stub__kernel_A_mul_BiiiiddPdS_S_S_S_(i32 noundef %21, i32 noundef %22, i32 noundef %23, i32 noundef %24, double noundef %25, double noundef %26, double* noundef %27, double* noundef %28, double* noundef %29, double* noundef %30, double* noundef %31), !dbg !1825
+  br label %kcall.end, !dbg !1825
+
+mergeKernel: kernel call:   call void @_Z29__device_stub__kernel_A_mul_BiiiiddPdS_S_S_S_(i32 noundef %21, i32 noundef %22, i32 noundef %23, i32 noundef %24, double noundef %25, double noundef %26, double* noundef %27, double* noundef %28, double* noundef %29, double* noundef %30, double* noundef %31), !dbg !1825
+mergeKernel: kernel call:   call void @_Z29__device_stub__kernel_A_mul_BiiiiddPdS_S_S_S_(i32 noundef %21, i32 noundef %22, i32 noundef %23, i32 noundef %24, double noundef %25, double noundef %26, double* noundef %27, double* noundef %28, double* noundef %29, double* noundef %30, double* noundef %31), !dbg !1825
+MergeKernel: blocks per grid:
+MergeKernel: threads per block:
+mergeKernel: found kernelName: _Z29__device_stub__kernel_A_mul_BiiiiddPdS_S_S_S_
+host kernel name: _Z29__device_stub__kernel_A_mul_BiiiiddPdS_S_S_S_
+Function names: _Z14kernel_A_mul_BiiiiddPdS_S_S_S_
+Function names: llvm.dbg.declare
+Function names: llvm.nvvm.read.ptx.sreg.ntid.x
+Function names: llvm.nvvm.read.ptx.sreg.ctaid.x
+Function names: llvm.nvvm.read.ptx.sreg.tid.x
+Function names: llvm.nvvm.read.ptx.sreg.ntid.y
+Function names: llvm.nvvm.read.ptx.sreg.ctaid.y
+Function names: llvm.nvvm.read.ptx.sreg.tid.y
+Function names: _Z23kernel_D_plus_tmp_mul_CiiiiddPdS_S_S_S_
+Function names: _Z29__device_stub__kernel_A_mul_BiiiiddPdS_S_S_S_
+Function names: cudaSetupArgument
+Function names: cudaLaunch
+Function names: _Z38__device_stub__kernel_D_plus_tmp_mul_CiiiiddPdS_S_S_S_
+Function names: _Z10num_blocksss
+Function names: main
+Function names: atoi
+Function names: malloc
+Function names: _ZL10init_arrayiiiiPdS_S_S_S_
+Function names: _ZL10cudaMallocIdE9cudaErrorPPT_m
+Function names: cudaMemcpy
+Function names: _ZL6kerneliiiiddPdS_S_S_S_
+Function names: cudaFree
+Function names: _ZL11print_arrayiiPd
+Function names: free
+Function names: fprintf
+Function names: _ZN4dim3C2Ejjj
+Function names: llvm.memcpy.p0i8.p0i8.i64
+Function names: cudaConfigureCall
+Function names: cudaMalloc
+MergeKernel: found deviceKernel: opt: /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/include/llvm/Support/Casting.h:104: static bool llvm::isa_impl_cl<To, const From*>::doit(const From*) [with To = llvm::Instruction; From = llvm::Value]: Assertion `Val && "isa<> used on a null pointer"' failed.
+PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace.
+Stack dump:
+0.	Program arguments: opt -enable-new-pm=0 -load /scratch/ah7226/CudaFE/build/MergeKernel/libLLVMCudaFE.so -merge-kernel -mem2reg -indvars -dce 2mm_linked.bc -o 2mm_cpu.bc
+1.	Running pass 'merge cuda kernel back to main file' on module '2mm_linked.bc'.
+ #0 0x000055715e7ba11c llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/Support/Unix/Signals.inc:565:22
+ #1 0x000055715e7ba1d7 PrintStackTraceSignalHandler(void*) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/Support/Unix/Signals.inc:632:1
+ #2 0x000055715e7b7deb llvm::sys::RunSignalHandlers() /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/Support/Signals.cpp:97:20
+ #3 0x000055715e7b9a69 SignalHandler(int) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/Support/Unix/Signals.inc:407:1
+ #4 0x00007fe102914420 __restore_rt (/lib/x86_64-linux-gnu/libpthread.so.0+0x14420)
+ #5 0x00007fe1023b100b raise /build/glibc-FcRMwW/glibc-2.31/signal/../sysdeps/unix/sysv/linux/raise.c:51:1
+ #6 0x00007fe102390859 abort /build/glibc-FcRMwW/glibc-2.31/stdlib/abort.c:81:7
+ #7 0x00007fe102390729 get_sysdep_segment_value /build/glibc-FcRMwW/glibc-2.31/intl/loadmsgcat.c:509:8
+ #8 0x00007fe102390729 _nl_load_domain /build/glibc-FcRMwW/glibc-2.31/intl/loadmsgcat.c:970:34
+ #9 0x00007fe1023a1fd6 (/lib/x86_64-linux-gnu/libc.so.6+0x33fd6)
+#10 0x000055715c1f9bc9 llvm::isa_impl_cl<llvm::Instruction, llvm::Value const*>::doit(llvm::Value const*) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/include/llvm/Support/Casting.h:105:36
+#11 0x000055715c1f79fe llvm::isa_impl_wrap<llvm::Instruction, llvm::Value const*, llvm::Value const*>::doit(llvm::Value const* const&) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/include/llvm/Support/Casting.h:132:3
+#12 0x000055715c1f45cf llvm::isa_impl_wrap<llvm::Instruction, llvm::Value const* const, llvm::Value const*>::doit(llvm::Value const* const&) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/include/llvm/Support/Casting.h:123:77
+#13 0x000055715c1f118a bool llvm::isa<llvm::Instruction, llvm::Value const*>(llvm::Value const* const&) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/include/llvm/Support/Casting.h:144:1
+#14 0x000055715c1f1d5e llvm::cast_retty<llvm::Instruction, llvm::Value const*>::ret_type llvm::dyn_cast<llvm::Instruction, llvm::Value const>(llvm::Value const*) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/include/llvm/Support/Casting.h:345:22
+#15 0x000055715d8e0de5 llvm::Value::print(llvm::raw_ostream&, bool) const /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/IR/AsmWriter.cpp:4575:38
+#16 0x00007fe10231905f llvm::operator<<(llvm::raw_ostream&, llvm::Value const&) /scratch/ah7226/install-14-cudafe/include/llvm/IR/Value.h:865:10
+#17 0x00007fe10230da7e (anonymous namespace)::MergeKernel::runOnModule(llvm::Module&) /scratch/ah7226/CudaFE/MergeKernel/mergeKernel.cpp:427:59
+#18 0x000055715daf12ac (anonymous namespace)::MPPassManager::runOnModule(llvm::Module&) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1549:20
+#19 0x000055715daec257 llvm::legacy::PassManagerImpl::run(llvm::Module&) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:539:13
+#20 0x000055715daf1b41 llvm::legacy::PassManager::run(llvm::Module&) /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1677:1
+#21 0x000055715c1001d3 main /scratch/ah7226/llvm-objects-14.0.0/llvm-project/llvm/tools/opt/opt.cpp:1042:15
+#22 0x00007fe102392083 __libc_start_main /build/glibc-FcRMwW/glibc-2.31/csu/../csu/libc-start.c:342:3
+#23 0x000055715c0bff1e _start (/scratch/ah7226/install-14-cudafe/bin/opt+0x1942f1e)
+Aborted (core dumped)
