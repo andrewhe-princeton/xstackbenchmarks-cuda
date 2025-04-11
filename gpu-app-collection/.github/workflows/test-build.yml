@@ -1,0 +1,35 @@
+name: Test Build
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the mydev branch
+  push:
+    branches-ignore:
+      - "gh-readonly-queue**"
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:  
+  test-12-6:
+    runs-on: ubuntu-latest
+    container:
+     image: ghcr.io/accel-sim/accel-sim-framework:ubuntu-24.04-cuda-12.8
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      
+      - name: Build Apps
+        run: |
+             git config --global --add safe.directory /__w/gpu-app-collection/gpu-app-collection
+             /bin/bash test-build.sh
+
+      - name: Print Successful Apps
+        if: always()
+        run: |
+              echo "Built `ls bin/12.8/release | wc` Apps:"
+              ls bin/12.8/release
