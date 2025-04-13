@@ -137,6 +137,11 @@ static __forceinline uint32_t llvm_srem_u32(int32_t a, int32_t b) {
   uint32_t r = a % b;
   return r;
 }
+static __forceinline uint32_t llvm_OC_smax_OC_i32(int32_t a, int32_t b) {
+  uint32_t r;
+r = a > b ? a :b;
+  return r;
+}
 
 
 /* Function Bodies */
@@ -187,41 +192,61 @@ free(((uint8_t*)((double*)D)));
 
 
 void _ZL10init_arrayiiiiPdS_S_S_S_(uint32_t ni, uint32_t nj, uint32_t nk, uint32_t nl, double* A, double* B, double* C, double* D, double* tmp) {
-  int64_t i;
-  int64_t j;
+  int32_t smax58;
+  int32_t smax65;
+  uint64_t i;
+  uint64_t j;
+  int32_t smax44;
+  int32_t smax51;
+  int32_t smax30;
+  int32_t smax37;
+  int32_t smax15;
+  int32_t smax22;
+  int32_t smax;
+  int32_t smax7;
 
+  smax58 = llvm_OC_smax_OC_i32(nk, 0);
+  smax65 = llvm_OC_smax_OC_i32(ni, 0);
 
-for(int64_t i = 0; i < ni;   i = i + 1){
+for(int64_t i = 0; i < smax65;   i = i + 1){
 
-for(int64_t j = 0; j < nk;   j = j + 1){
+for(int64_t j = 0; j < smax58;   j = j + 1){
   A[(i * ni + j)] = (((double)(i) * (double)(j)) / (double)(ni));
 }
 }
+  smax44 = llvm_OC_smax_OC_i32(nj, 0);
+  smax51 = llvm_OC_smax_OC_i32(nk, 0);
 
-for(int64_t i = 0; i < nk;   i = i + 1){
+for(int64_t i = 0; i < smax51;   i = i + 1){
 
-for(int64_t j = 0; j < nj;   j = j + 1){
+for(int64_t j = 0; j < smax44;   j = j + 1){
   B[(i * nk + j)] = (((double)(i) * (double)((j + 1))) / (double)(nj));
 }
 }
+  smax30 = llvm_OC_smax_OC_i32(nj, 0);
+  smax37 = llvm_OC_smax_OC_i32(nl, 0);
 
-for(int64_t i = 0; i < nl;   i = i + 1){
+for(int64_t i = 0; i < smax37;   i = i + 1){
 
-for(int64_t j = 0; j < nj;   j = j + 1){
+for(int64_t j = 0; j < smax30;   j = j + 1){
   C[(i * nl + j)] = (((double)(i) * (double)((j + 3))) / (double)(nl));
 }
 }
+  smax15 = llvm_OC_smax_OC_i32(nl, 0);
+  smax22 = llvm_OC_smax_OC_i32(ni, 0);
 
-for(int64_t i = 0; i < ni;   i = i + 1){
+for(int64_t i = 0; i < smax22;   i = i + 1){
 
-for(int64_t j = 0; j < nl;   j = j + 1){
+for(int64_t j = 0; j < smax15;   j = j + 1){
   D[(i * ni + j)] = (((double)(i) * (double)((j + 2))) / (double)(nk));
 }
 }
+  smax = llvm_OC_smax_OC_i32(nj, 0);
+  smax7 = llvm_OC_smax_OC_i32(ni, 0);
 
-for(int64_t i = 0; i < ni;   i = i + 1){
+for(int64_t i = 0; i < smax7;   i = i + 1){
 
-for(int64_t j = 0; j < nj;   j = j + 1){
+for(int64_t j = 0; j < smax;   j = j + 1){
   tmp[(i * ni + j)] = 0;
 }
 }
@@ -311,14 +336,18 @@ _Z23kernel_D_plus_tmp_mul_CiiiiddPdS_S_S_S__OC_2(ni, nj, nk, nl, alpha, beta, tm
 
 
 void _ZL11print_arrayiiPd(uint32_t ni, uint32_t nl, double* D) {
-  int64_t i;
-  int64_t j;
+  int32_t smax;
+  int32_t smax9;
+  uint64_t i;
+  uint64_t j;
   int32_t call11;
 
+  smax = llvm_OC_smax_OC_i32(nl, 0);
+  smax9 = llvm_OC_smax_OC_i32(ni, 0);
 
-for(int64_t i = 0; i < ni;   i = i + 1){
+for(int64_t i = 0; i < smax9;   i = i + 1){
 
-for(int64_t j = 0; j < nl;   j = j + 1){
+for(int64_t j = 0; j < smax;   j = j + 1){
   uint32_t call = fprintf(stderr, (_OC_str), D[(i * ni + j)]);
   if ((int)(i * ni + j) % (int)20 == 0) {
   fprintf(stderr, (_OC_str_OC_1));
@@ -332,19 +361,21 @@ for(int64_t j = 0; j < nl;   j = j + 1){
 void _Z14kernel_A_mul_BiiiiddPdS_S_S_S__OC_1(uint32_t ni, uint32_t nj, uint32_t nk, uint32_t nl, double alpha, double beta, double* tmp, double* A, double* B, double* C, double* D, uint32_t gridDim_2e_x, uint32_t gridDim_2e_y, uint32_t gridDim_2e_z, uint32_t blockDim_2e_x, uint32_t blockDim_2e_y, uint32_t blockDim_2e_z, uint32_t blockIdx_2e_x, uint32_t blockIdx_2e_y, uint32_t blockIdx_2e_z, uint32_t threadIdx_2e_x, uint32_t threadIdx_2e_y, uint32_t threadIdx_2e_z) {
   int32_t i;
   int32_t j;
-  int64_t k;
-  double dot;
+  int32_t smax;
+  uint64_t k;
+  double dot_2e_0_2e_lcssa;
 
   i = blockDim_2e_x * blockIdx_2e_x + threadIdx_2e_x;
   j = blockDim_2e_y * blockIdx_2e_y + threadIdx_2e_y;
   if (i < ni) {
   if (j < nj) {
-  dot = 0;
+  smax = llvm_OC_smax_OC_i32(nk, 0);
+  dot_2e_0_2e_lcssa = 0;
 
-for(int64_t k = 0; k < nk;   k = k + 1){
-  dot = (dot + ((alpha * A[(i * nk + k)]) * B[(k * nj + j)]));
+for(int64_t k = 0; k < smax;   k = k + 1){
+  double dot = (dot_2e_0_2e_lcssa + ((alpha * A[(i * nk + k)]) * B[(k * nj + j)]));
 }
-  tmp[(i * nj + j)] = dot;
+  tmp[(i * nj + j)] = dot_2e_0_2e_lcssa;
   }
   }
   return;
@@ -355,18 +386,21 @@ void _Z23kernel_D_plus_tmp_mul_CiiiiddPdS_S_S_S__OC_2(uint32_t ni, uint32_t nj, 
   int32_t i;
   int32_t l;
   double dot;
-  int64_t j;
+  int32_t smax;
+  uint64_t j;
+  double dot_2e_0_2e_lcssa;
 
   i = blockDim_2e_x * blockIdx_2e_x + threadIdx_2e_x;
   l = blockDim_2e_y * blockIdx_2e_y + threadIdx_2e_y;
   if (i < ni) {
   if (l < nl) {
   dot = (D[(i * nj + l)] * beta);
+  smax = llvm_OC_smax_OC_i32(nj, 0);
 
-for(int64_t j = 0; j < nj;   j = j + 1){
-  dot = (dot + (tmp[(i * nj + j)] * C[(j * nl + l)]));
+for(int64_t j = 0; j < smax;   j = j + 1){
+  dot = (dot_2e_0_2e_lcssa + (tmp[(i * nj + j)] * C[(j * nl + l)]));
 }
-  D[(i * nl + l)] = dot;
+  D[(i * nl + l)] = dot_2e_0_2e_lcssa;
   }
   }
   return;
