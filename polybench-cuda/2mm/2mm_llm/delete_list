@@ -1,0 +1,28 @@
+Here is a list of variable uses that can be replaced by hardcoding their assigned constant values:
+Variable: __FIXME_GLOBAL___OC_str
+Function: _ZL11print_arrayiiPd
+Location: First fprintf call.
+Change: The format string argument will be hardcoded.
+New Line: uint32_t __FIXME__call = fprintf(stderr, "%0.2lf ", D[(i * ni + j)]); /* Original format string: (__FIXME_GLOBAL___OC_str) */
+Variable: __FIXME_GLOBAL___OC_str_OC_1
+Function: _ZL11print_arrayiiPd
+Location: Second fprintf call.
+Change: The format string argument will be hardcoded.
+New Line: fprintf(stderr, "\n"); /* Original format string: (__FIXME_GLOBAL___OC_str_OC_1) */
+Variable: __FIXME_GLOBAL___OC_str_OC_1
+Function: _ZL11print_arrayiiPd
+Location: Third fprintf call.
+Change: The format string argument will be hardcoded.
+New Line: fprintf(stderr, "\n"); /* Original format string: (__FIXME_GLOBAL___OC_str_OC_1) */
+Variable: __FIXME__div (Value: 8)
+Function: ZL6kerneliiiiddPdS_S_S_S
+Location: Call to _Z14kernel_A_mul_BiiiiddPdS_S_S_S__OC_1 (14th argument - blockDim.x).
+Change: The argument __FIXME__div will be replaced by its calculated value 8.
+New Line Snippet: _Z14kernel_A_mul_BiiiiddPdS_S_S_S__OC_1(..., __FIXME__call, __FIXME__call5, 1, 8, 32, 1, ...); /* Original 14th argument: __FIXME__div */
+(Note: The original assignment __FIXME__div = (256 / 32); can be removed)
+Variable: __FIXME__div (Value: 8)
+Function: ZL6kerneliiiiddPdS_S_S_S
+Location: Call to _Z23kernel_D_plus_tmp_mul_CiiiiddPdS_S_S_S__OC_2 (14th argument - blockDim.x).
+Change: The argument __FIXME__div will be replaced by its calculated value 8.
+New Line Snippet: _Z23kernel_D_plus_tmp_mul_CiiiiddPdS_S_S_S__OC_2(..., __FIXME__call13, __FIXME__call18, 1, 8, 32, 1, ...); /* Original 14th argument: __FIXME__div */
+(Note: The original assignment __FIXME__div = (256 / 32); can be removed)
