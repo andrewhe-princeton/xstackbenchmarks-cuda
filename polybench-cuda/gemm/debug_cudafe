@@ -1,0 +1,380 @@
+mergeKernel: found originalAlloc   %A = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost = load double*, double** %A
+mergeKernel: found originalAlloc user  %67 = load double*, double** %A, align 8, !dbg !873
+mergeKernel: found originalAlloc user  %31 = load double*, double** %A, align 8, !dbg !827
+mergeKernel: found originalAlloc user  %21 = load double*, double** %A, align 8, !dbg !802
+mergeKernel: found originalAlloc user  store double* %10, double** %A, align 8, !dbg !771
+mergeKernel: found originalAlloc store:  store double* %10, double** %A, align 8, !dbg !771
+mergeKernel: found originalAlloc cast:  %10 = bitcast i8* %call8 to double*, !dbg !777
+mergeKernel: found originalAlloc ci:  %call8 = call noalias i8* @malloc(i64 %mul7) #12, !dbg !776
+mergeKernel: found originalAlloc   %B = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost1 = load double*, double** %B
+mergeKernel: found originalAlloc user  %69 = load double*, double** %B, align 8, !dbg !878
+mergeKernel: found originalAlloc user  %37 = load double*, double** %B, align 8, !dbg !837
+mergeKernel: found originalAlloc user  %22 = load double*, double** %B, align 8, !dbg !805
+mergeKernel: found originalAlloc user  store double* %13, double** %B, align 8, !dbg !781
+mergeKernel: found originalAlloc store:  store double* %13, double** %B, align 8, !dbg !781
+mergeKernel: found originalAlloc cast:  %13 = bitcast i8* %call12 to double*, !dbg !787
+mergeKernel: found originalAlloc ci:  %call12 = call noalias i8* @malloc(i64 %mul11) #12, !dbg !786
+mergeKernel: found originalAlloc   %C = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost2 = load double*, double** %C
+mergeKernel: found originalAlloc user  %65 = load double*, double** %C, align 8, !dbg !876
+mergeKernel: found originalAlloc user  %64 = load double*, double** %C, align 8, !dbg !874
+mergeKernel: found originalAlloc user  %55 = load double*, double** %C, align 8, !dbg !861
+mergeKernel: found originalAlloc user  %43 = load double*, double** %C, align 8, !dbg !846
+mergeKernel: found originalAlloc user  %20 = load double*, double** %C, align 8, !dbg !805
+mergeKernel: found originalAlloc user  store double* %16, double** %C, align 8, !dbg !791
+mergeKernel: found originalAlloc store:  store double* %16, double** %C, align 8, !dbg !791
+mergeKernel: found originalAlloc cast:  %16 = bitcast i8* %call16 to double*, !dbg !797
+mergeKernel: found originalAlloc ci:  %call16 = call noalias i8* @malloc(i64 %mul15) #12, !dbg !796
+mergeKernel: found originalAlloc   %C = alloca double*, align 8
+mergeKernel: found originalAlloc user  %ldHost3 = load double*, double** %C
+mergeKernel: found originalAlloc user  %ldHost2 = load double*, double** %C
+mergeKernel: found originalAlloc user  %65 = load double*, double** %C, align 8, !dbg !878
+mergeKernel: found originalAlloc user  %64 = load double*, double** %C, align 8, !dbg !876
+mergeKernel: found originalAlloc user  %55 = load double*, double** %C, align 8, !dbg !863
+mergeKernel: found originalAlloc user  %43 = load double*, double** %C, align 8, !dbg !848
+mergeKernel: found originalAlloc user  %20 = load double*, double** %C, align 8, !dbg !807
+mergeKernel: found originalAlloc user  store double* %16, double** %C, align 8, !dbg !791
+mergeKernel: found originalAlloc store:  store double* %16, double** %C, align 8, !dbg !791
+mergeKernel: found originalAlloc cast:  %16 = bitcast i8* %call16 to double*, !dbg !799
+mergeKernel: found originalAlloc ci:  %call16 = call noalias i8* @malloc(i64 %mul15) #12, !dbg !797, !tulip.target.mapdata.to !798
+CudaFE: found cudaConfigureCall
+mergeKernel: kernelBB: 
+kcall.configok:                                   ; preds = %entry
+  %21 = load i32, i32* %ni.addr, align 4, !dbg !807
+  %22 = load i32, i32* %nj.addr, align 4, !dbg !808
+  %23 = load i32, i32* %nk.addr, align 4, !dbg !809
+  %24 = load double, double* %alpha.addr, align 8, !dbg !810
+  %25 = load double, double* %beta.addr, align 8, !dbg !811
+  %26 = load double*, double** %C.addr, align 8, !dbg !812
+  %27 = load double*, double** %A.addr, align 8, !dbg !813
+  %28 = load double*, double** %B.addr, align 8, !dbg !814
+  call void @gemm.ll_CudaFE__Z10kernel_deviiiddPdS_S_(i32 %21, i32 %22, i32 %23, double %24, double %25, double* %26, double* %27, double* %28), !dbg !806
+  br label %kcall.end, !dbg !806
+
+mergeKernel: kernel call:   call void @gemm.ll_CudaFE__Z10kernel_deviiiddPdS_S_(i32 %21, i32 %22, i32 %23, double %24, double %25, double* %26, double* %27, double* %28), !dbg !806
+mergeKernel: kernel call:   call void @gemm.ll_CudaFE__Z10kernel_deviiiddPdS_S_(i32 %21, i32 %22, i32 %23, double %24, double %25, double* %26, double* %27, double* %28), !dbg !806
+MergeKernel: blocks per grid:
+MergeKernel: threads per block:
+mergeKernel: Host Kernel Name: gemm.ll_CudaFE__Z10kernel_deviiiddPdS_S_
+mergeKernel: found kernelName: _Z10kernel_deviiiddPdS_S_
+MergeKernel: Function Name: _Z10kernel_deviiiddPdS_S_
+host_kernelName: gemm.ll_CudaFE__Z10kernel_deviiiddPdS_S_
+MergeKernel: Assigned device kernel to function: _Z10kernel_deviiiddPdS_S_
+MergeKernel: found deviceKernel: 
+; Function Attrs: convergent noinline nounwind
+define dso_local void @_Z10kernel_deviiiddPdS_S_(i32 %ni, i32 %nj, i32 %nk, double %alpha, double %beta, double* %C, double* %A, double* %B) #0 !dbg !747 {
+entry:
+  %ni.addr = alloca i32, align 4
+  %nj.addr = alloca i32, align 4
+  %nk.addr = alloca i32, align 4
+  %alpha.addr = alloca double, align 8
+  %beta.addr = alloca double, align 8
+  %C.addr = alloca double*, align 8
+  %A.addr = alloca double*, align 8
+  %B.addr = alloca double*, align 8
+  %i = alloca i32, align 4
+  %j = alloca i32, align 4
+  %k = alloca i32, align 4
+  %dot = alloca double, align 8
+  store i32 %ni, i32* %ni.addr, align 4
+  call void @llvm.dbg.declare(metadata i32* %ni.addr, metadata !750, metadata !DIExpression()), !dbg !751
+  store i32 %nj, i32* %nj.addr, align 4
+  call void @llvm.dbg.declare(metadata i32* %nj.addr, metadata !752, metadata !DIExpression()), !dbg !753
+  store i32 %nk, i32* %nk.addr, align 4
+  call void @llvm.dbg.declare(metadata i32* %nk.addr, metadata !754, metadata !DIExpression()), !dbg !755
+  store double %alpha, double* %alpha.addr, align 8
+  call void @llvm.dbg.declare(metadata double* %alpha.addr, metadata !756, metadata !DIExpression()), !dbg !757
+  store double %beta, double* %beta.addr, align 8
+  call void @llvm.dbg.declare(metadata double* %beta.addr, metadata !758, metadata !DIExpression()), !dbg !759
+  store double* %C, double** %C.addr, align 8
+  call void @llvm.dbg.declare(metadata double** %C.addr, metadata !760, metadata !DIExpression()), !dbg !761
+  store double* %A, double** %A.addr, align 8
+  call void @llvm.dbg.declare(metadata double** %A.addr, metadata !762, metadata !DIExpression()), !dbg !763
+  store double* %B, double** %B.addr, align 8
+  call void @llvm.dbg.declare(metadata double** %B.addr, metadata !764, metadata !DIExpression()), !dbg !765
+  call void @llvm.dbg.declare(metadata i32* %i, metadata !766, metadata !DIExpression()), !dbg !767
+  %0 = call i32 @llvm.nvvm.read.ptx.sreg.ntid.x() #12, !dbg !768, !range !821
+  %1 = call i32 @llvm.nvvm.read.ptx.sreg.ctaid.x() #12, !dbg !822, !range !850
+  %mul = mul i32 %0, %1, !dbg !851
+  %2 = call i32 @llvm.nvvm.read.ptx.sreg.tid.x() #12, !dbg !852, !range !880
+  %add = add i32 %mul, %2, !dbg !881
+  store i32 %add, i32* %i, align 4, !dbg !767
+  call void @llvm.dbg.declare(metadata i32* %j, metadata !882, metadata !DIExpression()), !dbg !883
+  %3 = call i32 @llvm.nvvm.read.ptx.sreg.ntid.y() #12, !dbg !884, !range !821
+  %4 = call i32 @llvm.nvvm.read.ptx.sreg.ctaid.y() #12, !dbg !887, !range !850
+  %mul5 = mul i32 %3, %4, !dbg !890
+  %5 = call i32 @llvm.nvvm.read.ptx.sreg.tid.y() #12, !dbg !891, !range !880
+  %add7 = add i32 %mul5, %5, !dbg !894
+  store i32 %add7, i32* %j, align 4, !dbg !883
+  call void @llvm.dbg.declare(metadata i32* %k, metadata !895, metadata !DIExpression()), !dbg !896
+  call void @llvm.dbg.declare(metadata double* %dot, metadata !897, metadata !DIExpression()), !dbg !898
+  store double 0.000000e+00, double* %dot, align 8, !dbg !898
+  %6 = load i32, i32* %i, align 4, !dbg !899
+  %7 = load i32, i32* %ni.addr, align 4, !dbg !901
+  %cmp = icmp slt i32 %6, %7, !dbg !902
+  br i1 %cmp, label %land.lhs.true, label %if.end, !dbg !903
+
+land.lhs.true:                                    ; preds = %entry
+  %8 = load i32, i32* %j, align 4, !dbg !904
+  %9 = load i32, i32* %nj.addr, align 4, !dbg !905
+  %cmp8 = icmp slt i32 %8, %9, !dbg !906
+  br i1 %cmp8, label %if.then, label %if.end, !dbg !907
+
+if.then:                                          ; preds = %land.lhs.true
+  %10 = load double*, double** %C.addr, align 8, !dbg !908
+  %11 = load i32, i32* %i, align 4, !dbg !910
+  %12 = load i32, i32* %nj.addr, align 4, !dbg !911
+  %mul9 = mul nsw i32 %11, %12, !dbg !912
+  %13 = load i32, i32* %j, align 4, !dbg !913
+  %add10 = add nsw i32 %mul9, %13, !dbg !914
+  %idxprom = sext i32 %add10 to i64, !dbg !908
+  %arrayidx = getelementptr inbounds double, double* %10, i64 %idxprom, !dbg !908
+  %14 = load double, double* %arrayidx, align 8, !dbg !908
+  %15 = load double, double* %beta.addr, align 8, !dbg !915
+  %mul11 = fmul contract double %14, %15, !dbg !916
+  store double %mul11, double* %dot, align 8, !dbg !917
+  store i32 0, i32* %k, align 4, !dbg !918
+  br label %for.cond, !dbg !920
+
+for.cond:                                         ; preds = %for.inc, %if.then
+  %16 = load i32, i32* %k, align 4, !dbg !921
+  %17 = load i32, i32* %nk.addr, align 4, !dbg !923
+  %cmp12 = icmp slt i32 %16, %17, !dbg !924
+  br i1 %cmp12, label %for.body, label %for.end, !dbg !925
+
+for.body:                                         ; preds = %for.cond
+  %18 = load double, double* %alpha.addr, align 8, !dbg !926
+  %19 = load double*, double** %A.addr, align 8, !dbg !927
+  %20 = load i32, i32* %i, align 4, !dbg !928
+  %21 = load i32, i32* %nk.addr, align 4, !dbg !929
+  %mul13 = mul nsw i32 %20, %21, !dbg !930
+  %22 = load i32, i32* %k, align 4, !dbg !931
+  %add14 = add nsw i32 %mul13, %22, !dbg !932
+  %idxprom15 = sext i32 %add14 to i64, !dbg !927
+  %arrayidx16 = getelementptr inbounds double, double* %19, i64 %idxprom15, !dbg !927
+  %23 = load double, double* %arrayidx16, align 8, !dbg !927
+  %mul17 = fmul contract double %18, %23, !dbg !933
+  %24 = load double*, double** %B.addr, align 8, !dbg !934
+  %25 = load i32, i32* %k, align 4, !dbg !935
+  %26 = load i32, i32* %nj.addr, align 4, !dbg !936
+  %mul18 = mul nsw i32 %25, %26, !dbg !937
+  %27 = load i32, i32* %j, align 4, !dbg !938
+  %add19 = add nsw i32 %mul18, %27, !dbg !939
+  %idxprom20 = sext i32 %add19 to i64, !dbg !934
+  %arrayidx21 = getelementptr inbounds double, double* %24, i64 %idxprom20, !dbg !934
+  %28 = load double, double* %arrayidx21, align 8, !dbg !934
+  %mul22 = fmul contract double %mul17, %28, !dbg !940
+  %29 = load double, double* %dot, align 8, !dbg !941
+  %add23 = fadd contract double %29, %mul22, !dbg !941
+  store double %add23, double* %dot, align 8, !dbg !941
+  br label %for.inc, !dbg !942
+
+for.inc:                                          ; preds = %for.body
+  %30 = load i32, i32* %k, align 4, !dbg !943
+  %inc = add nsw i32 %30, 1, !dbg !943
+  store i32 %inc, i32* %k, align 4, !dbg !943
+  br label %for.cond, !dbg !944, !llvm.loop !945
+
+for.end:                                          ; preds = %for.cond
+  %31 = load double, double* %dot, align 8, !dbg !947
+  %32 = load double*, double** %C.addr, align 8, !dbg !948
+  %33 = load i32, i32* %i, align 4, !dbg !949
+  %34 = load i32, i32* %nj.addr, align 4, !dbg !950
+  %mul24 = mul nsw i32 %33, %34, !dbg !951
+  %35 = load i32, i32* %j, align 4, !dbg !952
+  %add25 = add nsw i32 %mul24, %35, !dbg !953
+  %idxprom26 = sext i32 %add25 to i64, !dbg !948
+  %arrayidx27 = getelementptr inbounds double, double* %32, i64 %idxprom26, !dbg !948
+  store double %31, double* %arrayidx27, align 8, !dbg !954
+  br label %if.end, !dbg !955
+
+if.end:                                           ; preds = %for.end, %land.lhs.true, %entry
+  ret void, !dbg !956
+}
+
+MergeKernel: created new Function: 
+declare void @_Z10kernel_deviiiddPdS_S_.1(i32, i32, i32, double, double, double*, double*, double*, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32)
+
+
+; Function Attrs: convergent noinline nounwind
+define dso_local void @_Z10kernel_deviiiddPdS_S_.1(i32 %ni, i32 %nj, i32 %nk, double %alpha, double %beta, double* %C, double* %A, double* %B, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) #0 {
+entry:
+  %ni.addr = alloca i32, align 4
+  %nj.addr = alloca i32, align 4
+  %nk.addr = alloca i32, align 4
+  %alpha.addr = alloca double, align 8
+  %beta.addr = alloca double, align 8
+  %C.addr = alloca double*, align 8
+  %A.addr = alloca double*, align 8
+  %B.addr = alloca double*, align 8
+  %i = alloca i32, align 4
+  %j = alloca i32, align 4
+  %k = alloca i32, align 4
+  %dot = alloca double, align 8
+  store i32 %ni, i32* %ni.addr, align 4
+  call void @llvm.dbg.declare(metadata i32* %ni.addr, metadata !747, metadata !DIExpression()), !dbg !751
+  store i32 %nj, i32* %nj.addr, align 4
+  call void @llvm.dbg.declare(metadata i32* %nj.addr, metadata !752, metadata !DIExpression()), !dbg !753
+  store i32 %nk, i32* %nk.addr, align 4
+  call void @llvm.dbg.declare(metadata i32* %nk.addr, metadata !754, metadata !DIExpression()), !dbg !755
+  store double %alpha, double* %alpha.addr, align 8
+  call void @llvm.dbg.declare(metadata double* %alpha.addr, metadata !756, metadata !DIExpression()), !dbg !757
+  store double %beta, double* %beta.addr, align 8
+  call void @llvm.dbg.declare(metadata double* %beta.addr, metadata !758, metadata !DIExpression()), !dbg !759
+  store double* %C, double** %C.addr, align 8
+  call void @llvm.dbg.declare(metadata double** %C.addr, metadata !760, metadata !DIExpression()), !dbg !761
+  store double* %A, double** %A.addr, align 8
+  call void @llvm.dbg.declare(metadata double** %A.addr, metadata !762, metadata !DIExpression()), !dbg !763
+  store double* %B, double** %B.addr, align 8
+  call void @llvm.dbg.declare(metadata double** %B.addr, metadata !764, metadata !DIExpression()), !dbg !765
+  call void @llvm.dbg.declare(metadata i32* %i, metadata !766, metadata !DIExpression()), !dbg !767
+  %12 = call i32 @llvm.nvvm.read.ptx.sreg.ntid.x() #12, !dbg !768, !range !821
+  %13 = call i32 @llvm.nvvm.read.ptx.sreg.ctaid.x() #12, !dbg !822, !range !850
+  %mul = mul i32 %12, %13, !dbg !851
+  %14 = call i32 @llvm.nvvm.read.ptx.sreg.tid.x() #12, !dbg !852, !range !880
+  %add = add i32 %mul, %14, !dbg !881
+  store i32 %add, i32* %i, align 4, !dbg !767
+  call void @llvm.dbg.declare(metadata i32* %j, metadata !882, metadata !DIExpression()), !dbg !883
+  %15 = call i32 @llvm.nvvm.read.ptx.sreg.ntid.y() #12, !dbg !884, !range !821
+  %16 = call i32 @llvm.nvvm.read.ptx.sreg.ctaid.y() #12, !dbg !887, !range !850
+  %mul5 = mul i32 %15, %16, !dbg !890
+  %17 = call i32 @llvm.nvvm.read.ptx.sreg.tid.y() #12, !dbg !891, !range !880
+  %add7 = add i32 %mul5, %17, !dbg !894
+  store i32 %add7, i32* %j, align 4, !dbg !883
+  call void @llvm.dbg.declare(metadata i32* %k, metadata !895, metadata !DIExpression()), !dbg !896
+  call void @llvm.dbg.declare(metadata double* %dot, metadata !897, metadata !DIExpression()), !dbg !898
+  store double 0.000000e+00, double* %dot, align 8, !dbg !898
+  %18 = load i32, i32* %i, align 4, !dbg !899
+  %19 = load i32, i32* %ni.addr, align 4, !dbg !901
+  %cmp = icmp slt i32 %18, %19, !dbg !902
+  br i1 %cmp, label %land.lhs.true, label %if.end, !dbg !903
+
+land.lhs.true:                                    ; preds = %entry
+  %20 = load i32, i32* %j, align 4, !dbg !904
+  %21 = load i32, i32* %nj.addr, align 4, !dbg !905
+  %cmp8 = icmp slt i32 %20, %21, !dbg !906
+  br i1 %cmp8, label %if.then, label %if.end, !dbg !907
+
+if.then:                                          ; preds = %land.lhs.true
+  %22 = load double*, double** %C.addr, align 8, !dbg !908
+  %23 = load i32, i32* %i, align 4, !dbg !910
+  %24 = load i32, i32* %nj.addr, align 4, !dbg !911
+  %mul9 = mul nsw i32 %23, %24, !dbg !912
+  %25 = load i32, i32* %j, align 4, !dbg !913
+  %add10 = add nsw i32 %mul9, %25, !dbg !914
+  %idxprom = sext i32 %add10 to i64, !dbg !908
+  %arrayidx = getelementptr inbounds double, double* %22, i64 %idxprom, !dbg !908
+  %26 = load double, double* %arrayidx, align 8, !dbg !908
+  %27 = load double, double* %beta.addr, align 8, !dbg !915
+  %mul11 = fmul contract double %26, %27, !dbg !916
+  store double %mul11, double* %dot, align 8, !dbg !917
+  store i32 0, i32* %k, align 4, !dbg !918
+  br label %for.cond, !dbg !920
+
+for.cond:                                         ; preds = %for.inc, %if.then
+  %28 = load i32, i32* %k, align 4, !dbg !921
+  %29 = load i32, i32* %nk.addr, align 4, !dbg !923
+  %cmp12 = icmp slt i32 %28, %29, !dbg !924
+  br i1 %cmp12, label %for.body, label %for.end, !dbg !925
+
+for.body:                                         ; preds = %for.cond
+  %30 = load double, double* %alpha.addr, align 8, !dbg !926
+  %31 = load double*, double** %A.addr, align 8, !dbg !927
+  %32 = load i32, i32* %i, align 4, !dbg !928
+  %33 = load i32, i32* %nk.addr, align 4, !dbg !929
+  %mul13 = mul nsw i32 %32, %33, !dbg !930
+  %34 = load i32, i32* %k, align 4, !dbg !931
+  %add14 = add nsw i32 %mul13, %34, !dbg !932
+  %idxprom15 = sext i32 %add14 to i64, !dbg !927
+  %arrayidx16 = getelementptr inbounds double, double* %31, i64 %idxprom15, !dbg !927
+  %35 = load double, double* %arrayidx16, align 8, !dbg !927
+  %mul17 = fmul contract double %30, %35, !dbg !933
+  %36 = load double*, double** %B.addr, align 8, !dbg !934
+  %37 = load i32, i32* %k, align 4, !dbg !935
+  %38 = load i32, i32* %nj.addr, align 4, !dbg !936
+  %mul18 = mul nsw i32 %37, %38, !dbg !937
+  %39 = load i32, i32* %j, align 4, !dbg !938
+  %add19 = add nsw i32 %mul18, %39, !dbg !939
+  %idxprom20 = sext i32 %add19 to i64, !dbg !934
+  %arrayidx21 = getelementptr inbounds double, double* %36, i64 %idxprom20, !dbg !934
+  %40 = load double, double* %arrayidx21, align 8, !dbg !934
+  %mul22 = fmul contract double %mul17, %40, !dbg !940
+  %41 = load double, double* %dot, align 8, !dbg !941
+  %add23 = fadd contract double %41, %mul22, !dbg !941
+  store double %add23, double* %dot, align 8, !dbg !941
+  br label %for.inc, !dbg !942
+
+for.inc:                                          ; preds = %for.body
+  %42 = load i32, i32* %k, align 4, !dbg !943
+  %inc = add nsw i32 %42, 1, !dbg !943
+  store i32 %inc, i32* %k, align 4, !dbg !943
+  br label %for.cond, !dbg !944, !llvm.loop !945
+
+for.end:                                          ; preds = %for.cond
+  %43 = load double, double* %dot, align 8, !dbg !947
+  %44 = load double*, double** %C.addr, align 8, !dbg !948
+  %45 = load i32, i32* %i, align 4, !dbg !949
+  %46 = load i32, i32* %nj.addr, align 4, !dbg !950
+  %mul24 = mul nsw i32 %45, %46, !dbg !951
+  %47 = load i32, i32* %j, align 4, !dbg !952
+  %add25 = add nsw i32 %mul24, %47, !dbg !953
+  %idxprom26 = sext i32 %add25 to i64, !dbg !948
+  %arrayidx27 = getelementptr inbounds double, double* %44, i64 %idxprom26, !dbg !948
+  store double %43, double* %arrayidx27, align 8, !dbg !954
+  br label %if.end, !dbg !955
+
+if.end:                                           ; preds = %for.end, %land.lhs.true, %entry
+  ret void, !dbg !956
+}
+
+mergeKernel: cudaCall2remove:   %0 = call i32 @llvm.nvvm.read.ptx.sreg.ntid.x() #12, !dbg !768, !range !821
+mergeKernel: what does I belong to?entrymergeKernel: cudaCall2remove:   %0 = call i32 @llvm.nvvm.read.ptx.sreg.ctaid.x() #12, !dbg !768, !range !805
+mergeKernel: what does I belong to?entrymergeKernel: cudaCall2remove:   %0 = call i32 @llvm.nvvm.read.ptx.sreg.tid.x() #12, !dbg !769, !range !806
+mergeKernel: what does I belong to?entrymergeKernel: cudaCall2remove:   %0 = call i32 @llvm.nvvm.read.ptx.sreg.ntid.y() #12, !dbg !772, !range !825
+mergeKernel: what does I belong to?entrymergeKernel: cudaCall2remove:   %0 = call i32 @llvm.nvvm.read.ptx.sreg.ctaid.y() #12, !dbg !772, !range !809
+mergeKernel: what does I belong to?entrymergeKernel: cudaCall2remove:   %0 = call i32 @llvm.nvvm.read.ptx.sreg.tid.y() #12, !dbg !773, !range !810
+mergeKernel: what does I belong to?entrymergeKernel: create metadata  br i1 %exitCheck.2, label %header.3, label %latch.1, !tulip.doall.loop.block.collapse !807
+mergeKernel: create metadata  br i1 %exitCheck.0, label %header.1, label %kcall.end, !tulip.doall.loop.grid.collapse !807
+SUSAN: original arg   %21 = load i32, i32* %ni.addr, align 4, !dbg !808
+SUSAN: original arg   %22 = load i32, i32* %nj.addr, align 4, !dbg !809
+SUSAN: original arg   %23 = load i32, i32* %nk.addr, align 4, !dbg !810
+SUSAN: original arg   %24 = load double, double* %alpha.addr, align 8, !dbg !811
+SUSAN: original arg   %25 = load double, double* %beta.addr, align 8, !dbg !812
+SUSAN: original arg   %26 = load double*, double** %C.addr, align 8, !dbg !813
+SUSAN: original arg   %27 = load double*, double** %A.addr, align 8, !dbg !814
+SUSAN: original arg   %28 = load double*, double** %B.addr, align 8, !dbg !815
+SUSAN: itnum:   %call = call i32 @_ZL10num_blocksii(i32 %1, i32 %2), !dbg !799
+SUSAN: itnum:   %call1 = call i32 @_ZL10num_blocksii(i32 %3, i32 %4), !dbg !802
+SUSAN: itnum: i32 1
+SUSAN: itnum:   %div = udiv i32 %0, 32, !dbg !794
+SUSAN: itnum: i32 32
+SUSAN: itnum: i32 1
+mergeKernel: indvar   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+mergeKernel: indvar   %indvar.1 = phi i32 [ 0, %header.0 ], [ %indvar.next.1, %latch.1 ]
+mergeKernel: indvar i32 0
+mergeKernel: indvar   %indvar.2 = phi i32 [ 0, %header.1 ], [ %indvar.next.2, %latch.2 ]
+mergeKernel: indvar   %indvar.3 = phi i32 [ 0, %header.2 ], [ %indvar.next.3, %latch.3 ]
+mergeKernel: indvar i32 0
+void (i32, i32, i32, double, double, double*, double*, double*, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32)
+mergeKernel: new function kernel Args:   %21 = load i32, i32* %ni.addr, align 4, !dbg !808
+mergeKernel: new function kernel Args:   %22 = load i32, i32* %nj.addr, align 4, !dbg !809
+mergeKernel: new function kernel Args:   %23 = load i32, i32* %nk.addr, align 4, !dbg !810
+mergeKernel: new function kernel Args:   %24 = load double, double* %alpha.addr, align 8, !dbg !811
+mergeKernel: new function kernel Args:   %25 = load double, double* %beta.addr, align 8, !dbg !812
+mergeKernel: new function kernel Args:   %26 = load double*, double** %C.addr, align 8, !dbg !813
+mergeKernel: new function kernel Args:   %27 = load double*, double** %A.addr, align 8, !dbg !814
+mergeKernel: new function kernel Args:   %28 = load double*, double** %B.addr, align 8, !dbg !815
+mergeKernel: new function kernel Args:   %call = call i32 @_ZL10num_blocksii(i32 %1, i32 %2), !dbg !799
+mergeKernel: new function kernel Args:   %call1 = call i32 @_ZL10num_blocksii(i32 %3, i32 %4), !dbg !802
+mergeKernel: new function kernel Args: i32 1
+mergeKernel: new function kernel Args:   %div = udiv i32 %0, 32, !dbg !794
+mergeKernel: new function kernel Args: i32 32
+mergeKernel: new function kernel Args: i32 1
+mergeKernel: new function kernel Args:   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+mergeKernel: new function kernel Args:   %indvar.1 = phi i32 [ 0, %header.0 ], [ %indvar.next.1, %latch.1 ]
+mergeKernel: new function kernel Args: i32 0
+mergeKernel: new function kernel Args:   %indvar.2 = phi i32 [ 0, %header.1 ], [ %indvar.next.2, %latch.2 ]
+mergeKernel: new function kernel Args:   %indvar.3 = phi i32 [ 0, %header.2 ], [ %indvar.next.3, %latch.3 ]
+mergeKernel: new function kernel Args: i32 0

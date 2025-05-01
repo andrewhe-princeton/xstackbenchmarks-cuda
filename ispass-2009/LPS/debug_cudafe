@@ -1,0 +1,19 @@
+Stack dump:
+0.	Program arguments: opt -load /u/ah7226/CudaFE//build/MergeKernel/libLLVMCudaFE.so -merge-kernel -mem2reg -indvars -dce laplace3d_linked.bc -o laplace3d_cpu.bc 
+1.	Running pass 'merge cuda kernel back to main file' on module 'laplace3d_linked.bc'.
+ #0 0x000055af3ba94191 llvm::sys::PrintStackTrace(llvm::raw_ostream&) /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/lib/Support/Unix/Signals.inc:533:22
+ #1 0x000055af3ba94228 PrintStackTraceSignalHandler(void*) /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/lib/Support/Unix/Signals.inc:594:1
+ #2 0x000055af3ba92098 llvm::sys::RunSignalHandlers() /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/lib/Support/Signals.cpp:68:20
+ #3 0x000055af3ba93b1a SignalHandler(int) /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/lib/Support/Unix/Signals.inc:385:1
+ #4 0x00007f874431f420 __restore_rt (/lib/x86_64-linux-gnu/libpthread.so.0+0x14420)
+ #5 0x00007f8743d28c2c llvm::APInt::isSingleWord() const /scratch/ah7226/install-9-cudafe/include/llvm/ADT/APInt.h:114:47
+ #6 0x00007f8743d33dfc llvm::APInt::isOneValue() const /scratch/ah7226/install-9-cudafe/include/llvm/ADT/APInt.h:411:9
+ #7 0x00007f8743d1fb6e llvm::ConstantInt::isOne() const /scratch/ah7226/install-9-cudafe/include/llvm/IR/Constants.h:201:5
+ #8 0x00007f8743d1477c (anonymous namespace)::MergeKernel::runOnModule(llvm::Module&) /u/ah7226/CudaFE/MergeKernel/mergeKernel.cpp:625:19
+ #9 0x000055af3b18d7d0 (anonymous namespace)::MPPassManager::runOnModule(llvm::Module&) /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1750:20
+#10 0x000055af3b18df8d llvm::legacy::PassManagerImpl::run(llvm::Module&) /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1863:13
+#11 0x000055af3b18e199 llvm::legacy::PassManager::run(llvm::Module&) /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:1895:1
+#12 0x000055af39e4529b main /scratch/ah7226/llvm-objects-9.0.0/llvm-project/llvm/tools/opt/opt.cpp:892:15
+#13 0x00007f8743d9d083 __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24083)
+#14 0x000055af39e01e2e _start (/scratch/ah7226/install-9-cudafe/bin/opt+0x1611e2e)
+Segmentation fault (core dumped)
