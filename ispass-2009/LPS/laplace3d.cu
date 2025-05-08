@@ -24,8 +24,8 @@
 // declaration, forward
 ////////////////////////////////////////////////////////////////////////
 
-extern "C" 
-void Gold_laplace3d(int NX, int NY, int NZ, float* h_u1, float* h_u2);
+//extern "C" 
+//void Gold_laplace3d(int NX, int NY, int NZ, float* h_u1, float* h_u2);
 
 
 // ANDREW: Copied in from gold.cpp
@@ -146,8 +146,8 @@ int main(int argc, char **argv){
   h_u1 = (float *)malloc(sizeof(float)*NX*NY*NZ);
   h_u2 = (float *)malloc(sizeof(float)*NX*NY*NZ);
   h_u3 = (float *)malloc(sizeof(float)*NX*NY*NZ);
-  cudaMallocPitch((void **)&d_u1, &pitch_bytes, sizeof(float)*NX, NY*NZ); // Original: CUDA_SAFE_CALL( cudaMallocPitch((void **)&d_u1, &pitch_bytes, sizeof(float)*NX, NY*NZ) );
-  cudaMallocPitch((void **)&d_u2, &pitch_bytes, sizeof(float)*NX, NY*NZ); // Original:  CUDA_SAFE_CALL( cudaMallocPitch((void **)&d_u2, &pitch_bytes, sizeof(float)*NX, NY*NZ) );
+  cudaMalloc((void **)&d_u1, sizeof(float)*NX*NY*NZ); // Original: CUDA_SAFE_CALL( cudaMallocPitch((void **)&d_u1, &pitch_bytes, sizeof(float)*NX, NY*NZ) );
+  cudaMalloc((void **)&d_u2, sizeof(float)*NX*NY*NZ); // Original:  CUDA_SAFE_CALL( cudaMallocPitch((void **)&d_u2, &pitch_bytes, sizeof(float)*NX, NY*NZ) );
 
 
   pitch = pitch_bytes/sizeof(float);
@@ -170,10 +170,7 @@ int main(int argc, char **argv){
   // copy u1 to device
 
   // CUT_SAFE_CALL(cutStartTimer(hTimer));
-  cudaMemcpy2D(d_u1, pitch_bytes,
-                               h_u1, sizeof(float)*NX,
-                               sizeof(float)*NX, NY*NZ,
-                               cudaMemcpyHostToDevice) ;
+  cudaMemcpy(d_u1, h_u1, sizeof(float)*NX * NY*NZ, cudaMemcpyHostToDevice) ;
   cudaThreadSynchronize() ;
   // CUT_SAFE_CALL(cutStopTimer(hTimer));
   // printf("\nCopy u1 to device: %f (ms) \n", cutGetTimerValue(hTimer));
@@ -212,10 +209,11 @@ int main(int argc, char **argv){
   // Read back GPU results
 
   // CUT_SAFE_CALL( cutStartTimer(hTimer) );
-  cudaMemcpy2D(h_u2, sizeof(float)*NX,
-                               d_u1, pitch_bytes,
-                               sizeof(float)*NX, NY*NZ,
-                               cudaMemcpyDeviceToHost);
+  cudaMemcpy(h_u2, d_u1, sizeof(float)*NX*NY*NZ,cudaMemcpyDeviceToHost);
+  // ORIGINAL cudaMemcpy2D(h_u2, sizeof(float)*NX,
+  //                              d_u1, pitch_bytes,
+  //                              sizeof(float)*NX, NY*NZ,
+  //                              cudaMemcpyDeviceToHost);
   // CUT_SAFE_CALL( cutStopTimer(hTimer) );
   // printf("\nCopy u2 to host: %f (ms) \n", cutGetTimerValue(hTimer));
   // CUT_SAFE_CALL( cutResetTimer(hTimer) );
