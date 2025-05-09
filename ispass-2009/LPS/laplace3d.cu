@@ -50,6 +50,7 @@ void Gold_laplace3d(int NX, int NY, int NZ, float* u1, float* u2)
       }
     }
   }
+  return;
 }
 
 void printHelp(void);
@@ -74,15 +75,16 @@ int main(int argc, char **argv){
 
   // check command line inputs
 
+  int returnCode = 0;
   if( argc, (const char**)argv, "help") {
     printHelp();
-    return 1;
+    returnCode = 1;
   }
 
   if( ( argc, (const char**)argv, "nx", &NX) ) { // Original:   if( cutGetCmdLineArgumenti( argc, (const char**)argv, "nx", &NX) ) {
     if( NX <= 99 ) {
       printf("Illegal argument - nx must be greater than 99\n");
-      return -1;
+      returnCode = -1;
     }
   }
   else
@@ -91,7 +93,7 @@ int main(int argc, char **argv){
   if( argc, (const char**)argv, "ny", &NY ) { // Original:   if( cutGetCmdLineArgumenti( argc, (const char**)argv, "ny", &NY) ) {
     if( NY <= 99 ) {
       printf("Illegal argument - ny must be greater than 99\n");
-      return -1;
+      returnCode = -1;
     }
   }
   else
@@ -101,7 +103,7 @@ int main(int argc, char **argv){
 
     if( NZ <= 99 ) {
       printf("Illegal argument - nz must be greater than 99\n");
-      return -1;
+      returnCode = -1;
     }
   }
   else
@@ -111,7 +113,7 @@ int main(int argc, char **argv){
 
     if( REPEAT <= 0 ) {
       printf("Illegal argument - repeat must be greater than zero\n");
-      return -1;
+      returnCode = -1;
     }
   }
   else
@@ -119,9 +121,12 @@ int main(int argc, char **argv){
 
   printf("\nGrid dimensions: %d x %d x %d\n", NX, NY, NZ);
 
+  
   // initialise card and timer
   int deviceCount;                                                         
-  cudaGetDeviceCount(&deviceCount); // Original: CUDA_SAFE_CALL_NO_SYNC(cudaGetDeviceCount(&deviceCount));                          
+  cudaGetDeviceCount(&deviceCount); // Original: CUDA_SAFE_CALL_NO_SYNC(cudaGetDeviceCount(&deviceCount));    
+
+  /*
   if (deviceCount == 0) {                                                  
       fprintf(stderr, "There is no device.\n");                            
       exit(EXIT_FAILURE);                                                  
@@ -140,7 +145,7 @@ int main(int argc, char **argv){
   else                                                                     
       cudaSetDevice(dev); // Original: CUDA_SAFE_CALL(cudaSetDevice(dev));   
   // cutCreateTimer(&hTimer); // Original:  CUT_SAFE_CALL( cutCreateTimer(&hTimer) );
- 
+  */
   // allocate memory for arrays
 
   h_u1 = (float *)malloc(sizeof(float)*NX*NY*NZ);
@@ -278,15 +283,15 @@ int main(int argc, char **argv){
   printf("\n rms error = %f \n",sqrt(err/ (float)(NX*NY*NZ)));
 
  // Release GPU and CPU memory
-  printf("CUDA_SAFE_CALL( cudaFree(d_u1) );\n"); fflush(stdout);
+  printf("CUDA_SAFE_CALL( cudaFree(d_u1) );\n"); // fflush(stdout);
   cudaFree(d_u1);
-  printf("CUDA_SAFE_CALL( cudaFree(d_u2) );\n"); fflush(stdout);
+  printf("CUDA_SAFE_CALL( cudaFree(d_u2) );\n"); // fflush(stdout);
   cudaFree(d_u2);
-  printf("free(h_u1);\n"); fflush(stdout);
+  printf("free(h_u1);\n"); // fflush(stdout);
   free(h_u1);
-  printf("free(h_u2);\n"); fflush(stdout);
+  printf("free(h_u2);\n"); // fflush(stdout);
   free(h_u2);
-  printf("free(h_u3);\n"); fflush(stdout);
+  printf("free(h_u3);\n"); // fflush(stdout);
   free(h_u3);
 
   // CUT_SAFE_CALL( cutDeleteTimer(hTimer) );
