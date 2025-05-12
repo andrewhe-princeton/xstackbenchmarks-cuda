@@ -1,0 +1,6 @@
+1. Code motion -> Doesn't compile when you just ask it. Spawns in functions like atoi. Need to track scope and usage (maybe define rules and take input as a json).
+2. Parentheses Removal -> Worked. Verify each type parentheses are inserted.
+3. Magic Numbers -> Right idea, didn't work. Map all constant numbers to possible replacements into variables eg. const.
+4. Pointer Cast -> Worked. Not sure how to verify correctness.
+5. Expression Extraction -> Worked, shouldn't be difficult to verify correctness. Need to watch out for runaway generation.
+6. Expression Inlining -> Worked, shouldn't be difficult to verify correctness, just check for liveness.
